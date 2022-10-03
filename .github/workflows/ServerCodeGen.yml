@@ -85,14 +85,16 @@ jobs:
           to_environment: ${{ env.environment }}
           version: ${{ needs.setup.outputs.version }}
   pact-record-release:
-    needs: pact-can-i-deploy
+    needs: [setup, pact-can-i-deploy]
     if: github.ref == 'refs/heads/main'
+    env:
+      version: ${{ needs.setup.outputs.version }}
     runs-on: ubuntu-latest
     steps:
       - run: |
           docker run --rm -v /${PWD}:/${PWD} -w ${PWD} \
-          -e pact_broker \
-          -e pact_broker_token \
+          -e PACT_BROKER_BASE_URL \
+          -e PACT_BROKER_TOKEN \
           -e application_name \
           -e version \
           -e environment \
@@ -100,6 +102,6 @@ jobs:
           broker record-release \
           --environment=$environment \
           --pacticipant=$application_name \
-          --broker-base-url=$pact_broker \
-          --broker-token=$pact_broker_token \
+          --broker-base-url=$PACT_BROKER_BASE_URL \
+          --broker-token=$PACT_BROKER_TOKEN \
           --version=$version
