@@ -47,21 +47,21 @@ describe("tests with Pact", () => {
   });
 
   it("tests consumer b", () => {
-    const expectedProduct = {
-      id: "10",
-      type: "CREDIT_CARD",
-      name: "28 Degrees",
-      price: 30.0,
-    };
-
-    // // Uncomment the below expectedProduct to see a failure
     // const expectedProduct = {
     //   id: "10",
     //   type: "CREDIT_CARD",
     //   name: "28 Degrees",
     //   price: 30.0,
-    //   newField: 22,
     // };
+
+    // // Uncomment the below expectedProduct to see a failure
+    const expectedProduct = {
+      id: "10",
+      type: "CREDIT_CARD",
+      name: "28 Degrees",
+      price: 30.0,
+      newField: 22,
+    };
     providerWithConsumerB
       .given("products exist")
       .uponReceiving("A request to get all products")
