@@ -98,9 +98,11 @@ jobs:
           version: ${{ needs.setup-auto-mock.outputs.version }}
 
   pact-record-release:
-    needs: pact-can-i-deploy
+    needs: [setup-auto-mock, pact-can-i-deploy]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    env:
+      version: ${{ needs.setup-auto-mock.outputs.version }}
     steps:
       - run: |
           docker run --rm -v /${PWD}:/${PWD} -w ${PWD} \
