@@ -1,0 +1,85 @@
+name: API Consumer CodeGen
+
+# Create/Upload OpenAPI Document in SwaggerHub
+# Edit OpenAPI Document in SwaggerHub
+# Sync OpenAPI -> SCM with Github Sync - https://support.smartbear.com/swaggerhub/docs/integrations/github-sync.html
+# Version number = OpenAPI SemVer Version + GitHub Commit Sha for traceability on change
+# *** Modify code-gen (add gitignore, use cross-fetch, add ability to run tests)
+# *** auther tests with Pact
+# Run unit test in CI with Pact
+# Upload pacts to Pactflow
+
+on:
+  push:
+    branches: ["main", "swaggerhub*"]
+    paths:
+      - "client-codegen-pact/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "client-codegen-pact/**"
+
+  workflow_dispatch:
+
+# (This just saves defining these multiple times for different pact jobs)
+env:
+  version: ${{ github.sha }}
+  application_name: swaggerhub-pactflow-provider
+  PACT_BROKER_BASE_URL: https://saflow.pactflow.io
+  PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+      - name: get version of OAS
+        run: |
+          sudo snap install yq && 
+          OAS_VERSION=$(yq '.info.version' oas/swagger.yaml)
+          UNIQUE_VERSION=${OAS_VERSION}-${{ github.sha }}-client-code-gen
+          echo "version=${UNIQUE_VERSION}" >> $GITHUB_ENV
+    outputs:
+      version: ${{ env.version }}
+
+  test:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+      - run: cd client-codegen-pact && npm i
+      - run: cd client-codegen-pact && npm test
+      - uses: pactflow/actions/publish-pact-files@v1.0.0
+        env:
+          pactfiles: client-codegen-pact/pacts
+          version: ${{ needs.setup.outputs.version }}
+
+  pact-can-i-deploy:
+    needs: [setup, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pactflow/actions/can-i-deploy@v1.0.0
+        env:
+          to_environment: "test"
+          version: ${{ needs.setup.outputs.version }}
+
+  pact-record-release:
+    needs: pact-can-i-deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - run: |
+          docker run --rm -v /${PWD}:/${PWD} -w ${PWD} \
+          -e pact_broker \
+          -e pact_broker_token \
+          -e application_name \
+          -e version \
+          pactfoundation/pact-cli:latest \
+          broker record-release \
+          --environment=test \
+          --pacticipant=$application_name \
+          --broker-base-url=$pact_broker \
+          --broker-token=$pact_broker_token \
+          --version=$version
