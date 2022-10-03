@@ -31,7 +31,7 @@ env:
   SWAGGERHUB_API_KEY: ${{ secrets.SWAGGERHUB_API_KEY }}
   SWAGGERHUB_URL: https://api.swaggerhub.com
   SWAGGERHUB_ORG: YOU54F
-  SWAGGERHUB_API_NAME: pactflow-demo
+  SWAGGERHUB_API_NAME: swaggerhub-pactflow
 
 jobs:
   setup-auto-mock:
