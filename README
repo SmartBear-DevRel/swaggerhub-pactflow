@@ -106,7 +106,7 @@ We can actually begin to work on all of next major sections (3, 4 and 5) in para
 > The API Auto Mocking integration creates and maintains a semi-static mock of your API based on the responses and examples defined in your OpenAPI 3.0 or 2.0 definition. The mock is updated every time you save your API.
 > The mock helps you test your API when designing it, that is, before it is implemented by developers. Also, the mock allows developers to start building client applications even before the API back end is ready.
 
-![Design First - Provider Auto Mock workflow](/img/integrations/swaggerhub/design-first-provider-automock.png)
+![Design First - Provider Auto Mock workflow](https://docs.pactflow.io/assets/images/design-first-provider-automock-fb04d533dfe4205fa3750b6241a7a459.png)
 
 You can use the `./.github/workflows/AutoMock.yml` GitHub actions workflow to setup an [Auto Mock](https://support.smartbear.com/swaggerhub/docs/integrations/api-auto-mocking.html) virtualisation server (also referred to as "VirtServer") from your OpenAPI as it changes in SwaggerHub. The AutoMock will be tested against your specification and the results uploaded to Pactflow.
 
@@ -146,7 +146,7 @@ Use the [record-deployment](/docs/bi-directional-contract-testing/deploying) com
 
 ### 4. Consumer Workflow
 
-![Design First - Consumer workflow](/img/integrations/swaggerhub/design-first-consumer.png)
+![Design First - Consumer workflow](https://docs.pactflow.io/assets/images/design-first-consumer-74d2c8d00d7310062b2fae7d1314cf23.png)
 
 [Consumer Side Bi-Directional Contract Testing Guide](https://docs.pactflow.io/docs/bi-directional-contract-testing/consumer)
 
@@ -191,7 +191,7 @@ We now have a consumer deployed to a test environment, that uses the Auto Mock. 
 
 ### 5. (Real) Provider Workflow
 
-![Design First - Provider workflow](/img/integrations/swaggerhub/design-first-provider.png)
+![Design First - Provider workflow](https://docs.pactflow.io/assets/images/design-first-provider-e2659e16c3b39fa1ec6cd9d7fffae83a.png)
 
 We can now repeat this process, but with the real provider which we can deploy to real environments.
 
