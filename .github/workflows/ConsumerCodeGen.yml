@@ -24,7 +24,7 @@ on:
 # (This just saves defining these multiple times for different pact jobs)
 env:
   version: ${{ github.sha }}
-  application_name: swaggerhub-pactflow-provider
+  application_name: swaggerhub-pactflow-consumer-codegen
   PACT_BROKER_BASE_URL: https://saflow.pactflow.io
   PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
 
