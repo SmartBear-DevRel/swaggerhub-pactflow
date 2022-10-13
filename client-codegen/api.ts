@@ -106,12 +106,6 @@ export interface Product {
      * @type {string}
      * @memberof Product
      */
-    firstName?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Product
-     */
     version?: string;
     /**
      * 
