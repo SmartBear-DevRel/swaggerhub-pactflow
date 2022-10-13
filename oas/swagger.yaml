@@ -45,6 +45,7 @@ paths:
                   id: "1234"
                   type: food
                   price: 42
+                  name: burger
         required: true
       responses:
         "200":
@@ -59,6 +60,7 @@ paths:
                     id: "1234"
                     type: food
                     price: 42
+                    name: burger
   /product/{id}:
     get:
       summary: Find product by ID
@@ -105,6 +107,10 @@ components:
         id:
           type: string
         type:
+          type: string
+        name:
+          type: string
+        firstName:
           type: string
         version:
           type: string
