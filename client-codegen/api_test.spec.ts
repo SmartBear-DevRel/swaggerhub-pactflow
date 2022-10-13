@@ -26,7 +26,8 @@ describe("DefaultApi", () => {
   "value" : {
     "id" : "1234",
     "type" : "food",
-    "price" : 42
+    "price" : 42,
+    "name" : "burger"
   }
 }
     return expect(instance.createProduct(body, {})).resolves.toBe(null)
