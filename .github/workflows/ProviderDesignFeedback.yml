@@ -48,6 +48,7 @@ jobs:
     strategy:
       matrix:
         environment: [test, production]
+      fail-fast: false
     needs: pact-publish-oas-action
     runs-on: ubuntu-latest
     steps:
