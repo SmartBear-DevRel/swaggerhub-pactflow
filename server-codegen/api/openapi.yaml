@@ -47,7 +47,6 @@ paths:
                   id: "1234"
                   type: food
                   price: 42
-                  name: burger
         required: true
       responses:
         "200":
@@ -62,7 +61,6 @@ paths:
                     id: "1234"
                     type: food
                     price: 42
-                    name: burger
       x-swagger-router-controller: Default
   /product/{id}:
     get:
@@ -112,15 +110,12 @@ components:
           type: string
         type:
           type: string
-        name:
-          type: string
         version:
           type: string
         price:
           type: number
       example:
         price: 0.80082819046101150206595775671303272247314453125
-        name: name
         id: id
         type: type
         version: version

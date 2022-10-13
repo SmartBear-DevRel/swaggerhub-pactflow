@@ -13,7 +13,6 @@ exports.createProduct = function(body) {
     var examples = {};
     examples['application/json'] = {
   "price" : 0.8008281904610115,
-  "name" : "name",
   "id" : "id",
   "type" : "type",
   "version" : "version"
@@ -38,13 +37,11 @@ exports.getAllProducts = function() {
     var examples = {};
     examples['application/json'] = [ {
   "price" : 0.8008281904610115,
-  "name" : "name",
   "id" : "id",
   "type" : "type",
   "version" : "version"
 }, {
   "price" : 0.8008281904610115,
-  "name" : "name",
   "id" : "id",
   "type" : "type",
   "version" : "version"
@@ -70,7 +67,6 @@ exports.getProductByID = function(id) {
     var examples = {};
     examples['application/json'] = {
   "price" : 0.8008281904610115,
-  "name" : "name",
   "id" : "id",
   "type" : "type",
   "version" : "version"
