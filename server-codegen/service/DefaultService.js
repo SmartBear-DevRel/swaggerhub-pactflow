@@ -12,7 +12,6 @@ exports.createProduct = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "firstName" : "firstName",
   "price" : 0.8008281904610115,
   "name" : "name",
   "id" : "id",
@@ -38,14 +37,12 @@ exports.getAllProducts = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = [ {
-  "firstName" : "firstName",
   "price" : 0.8008281904610115,
   "name" : "name",
   "id" : "id",
   "type" : "type",
   "version" : "version"
 }, {
-  "firstName" : "firstName",
   "price" : 0.8008281904610115,
   "name" : "name",
   "id" : "id",
@@ -72,7 +69,6 @@ exports.getProductByID = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "firstName" : "firstName",
   "price" : 0.8008281904610115,
   "name" : "name",
   "id" : "id",

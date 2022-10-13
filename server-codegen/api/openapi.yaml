@@ -114,14 +114,11 @@ components:
           type: string
         name:
           type: string
-        firstName:
-          type: string
         version:
           type: string
         price:
           type: number
       example:
-        firstName: firstName
         price: 0.80082819046101150206595775671303272247314453125
         name: name
         id: id
