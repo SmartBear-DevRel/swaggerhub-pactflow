@@ -100,12 +100,6 @@ export interface Product {
      * @type {string}
      * @memberof Product
      */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Product
-     */
     version?: string;
     /**
      * 
