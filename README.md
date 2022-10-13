@@ -58,8 +58,8 @@ Next steps: now that we have agreed on our design, we can get started on our imp
        6. Paste in the Pactflow API token value you copied in the previous step.
 4. Create a GitHub Actions workflow
    1. Select `Add File` -> `Create new file` in your GitHub Project
-   2. Set the title to `.github/workflows/Consumer_Insight.yml`
-   3. Paste the contents of `.github/workflows/Consumer_Insight.yml` file from this repository
+   2. Set the title to `.github/workflows/ProviderDesignFeedback.yml`
+   3. Paste the contents of `.github/workflows/ProviderDesignFeedback.yml` file from this repository
    4. Set your application name `application_name: swaggerhub-pactflow-provider` to your required provider name. This will be used by your consumer to identify the relationship between consumer->provider so should be sensibly named
    5. Update `PACT_BROKER_BASE_URL` to the URL of your Pactflow account
       1. In Pactflow:
@@ -67,7 +67,7 @@ Next steps: now that we have agreed on our design, we can get started on our imp
           2. Click the `COPY PACTFLOW BASE URL` button
       2. In Github:
           1. Open your project
-             1. Open `.github/workflows/Consumer_Insight.yml`
+             1. Open `.github/workflows/ProviderDesignFeedback.yml`
              2. In the upper right corner of the file view, click 🖊️ to open the file editor.
              3. Update the value of `PACT_BROKER_BASE_URL` to the base URL of your own Pactflow account. You can easily get this by clicking the COPY PACTFLOW BASE URL button on the API Tokens page in Pactflow.
              4. Press the green `Commit changes` button
