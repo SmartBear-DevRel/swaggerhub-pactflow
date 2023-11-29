@@ -1,6 +1,10 @@
 # Tooling integration - SwaggerHub -> Pactflow
 
-In this guide, you'll learn how to use Pactflow and [SwaggerHub](https://swaggerhub.com/) together, to add contract testing to your design first API development workflow.
+## Overview
+
+_⚠️_ SwaggerHub now provides a native PactFlow Integration, see https://pactflow.io/integrations/swaggerhub/ for more detail
+
+In this guide, you'll learn how to utilise Pactflow and [SwaggerHub](https://swaggerhub.com/) together, to add contract testing to your design first API development workflow.
 
 ## Benefits
 
